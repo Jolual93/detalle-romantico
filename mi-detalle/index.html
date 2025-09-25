@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para ti, mi amor</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe6f2, #fff0f5);
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: #d6336c;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-top: 50px;
+      animation: aparecer 2s ease;
+    }
+    p {
+      font-size: 1.5em;
+      margin-top: 20px;
+      animation: latido 2s infinite;
+    }
+    @keyframes aparecer {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes latido {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    /* corazones flotando */
+    .corazon {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 24px;
+      animation: flotar 6s linear infinite;
+    }
+    @keyframes flotar {
+      from { transform: translateY(100vh) scale(1);}
+      to { transform: translateY(-10vh) scale(1.5);}
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Mensaje para ti 💖</h1>
+  <p id="frase"></p>
+
+  <!-- Reproductor de música -->
+  <audio id="musica" autoplay loop></audio>
+
+  <script>
+    // Banco de frases (20)
+    const frases = [
+      "Eres la casualidad más bonita que llegó a mi vida ✨",
+      "Tu sonrisa tiene la magia de volver perfecto cualquier día 🌸",
+      "Amarte es la aventura más hermosa que me ha pasado 💫",
+      "Si existieran mil universos, en todos te elegiría a ti 🌌",
+      "Tus abrazos son mi lugar favorito en el mundo 🫂",
+      "Eres mi calma en medio de cualquier tormenta 🌧️☀️",
+      "Nunca pensé que el amor pudiera sentirse tan infinito contigo ♾️",
+      "Eres el sueño que no quiero despertar 🌙",
+      "A tu lado descubrí que el paraíso no está en un lugar, sino en una persona 🏝️",
+      "Tu voz es la melodía más dulce que conozco 🎶",
+      "Amarte me enseñó que la eternidad cabe en un instante contigo ⏳",
+      "Si pudiera pedir un deseo, sería encontrarte en cada vida 💕",
+      "Tu mirada tiene el poder de detener mi mundo 🌍",
+      "Eres mi secreto favorito y mi verdad más grande 💌",
+      "Cada día contigo es un poema que se escribe solo 📖",
+      "Tu amor es la brújula que guía todos mis caminos 🧭",
+      "Lo mejor de mis días siempre tiene tu nombre 🌹",
+      "Eres la respuesta a todas mis preguntas sobre la felicidad 🌈",
+      "En cada latido mío hay un pedacito de ti ❤️",
+      "Eres la historia de amor que siempre quise vivir 📚"
+    ];
+
+    // Canciones (poner rutas correctas en tu proyecto)
+    const canciones = [
+      "Velvet Skies.mp3",
+      "Velvet Skies (1).mp3"
+    ];
+
+    // Escoger frase aleatoria
+    const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+    document.getElementById("frase").textContent = fraseAleatoria;
+
+    // Escoger canción aleatoria
+    const cancionAleatoria = canciones[Math.floor(Math.random() * canciones.length)];
+    document.getElementById("musica").src = cancionAleatoria;
+
+    // Crear corazones flotando
+    function crearCorazon() {
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon");
+      corazon.innerHTML = "❤️";
+      corazon.style.left = Math.random() * 100 + "vw";
+      corazon.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(corazon);
+      setTimeout(() => corazon.remove(), 6000);
+    }
+    setInterval(crearCorazon, 800);
+  </script>
+</body>
+</html>
