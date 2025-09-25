@@ -22,6 +22,20 @@
       margin-top: 20px;
       animation: latido 2s infinite;
     }
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1.2em;
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #d6336c;
+    }
     @keyframes aparecer {
       from {opacity: 0; transform: translateY(20px);}
       to {opacity: 1; transform: translateY(0);}
@@ -31,7 +45,6 @@
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
-    /* corazones flotando */
     .corazon {
       position: absolute;
       color: #ff4d6d;
@@ -48,11 +61,13 @@
   <h1>💖 Mensaje para ti 💖</h1>
   <p id="frase"></p>
 
-  <!-- Reproductor de música -->
-  <audio id="musica" autoplay loop></audio>
+  <!-- Botón para reproducir -->
+  <button onclick="playMusic()">💖 Reproducir mi detalle</button>
+
+  <audio id="musica" loop></audio>
 
   <script>
-    // Banco de frases (20)
+    // Banco de frases
     const frases = [
       "Eres la casualidad más bonita que llegó a mi vida ✨",
       "Tu sonrisa tiene la magia de volver perfecto cualquier día 🌸",
@@ -76,7 +91,7 @@
       "Eres la historia de amor que siempre quise vivir 📚"
     ];
 
-    // Canciones (poner rutas correctas en tu proyecto)
+    // Canciones
     const canciones = [
       "Velvet Skies.mp3",
       "Velvet Skies (1).mp3"
@@ -86,11 +101,15 @@
     const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
     document.getElementById("frase").textContent = fraseAleatoria;
 
-    // Escoger canción aleatoria
-    const cancionAleatoria = canciones[Math.floor(Math.random() * canciones.length)];
-    document.getElementById("musica").src = cancionAleatoria;
+    // Función para reproducir música al darle click
+    function playMusic() {
+      const musica = document.getElementById("musica");
+      const cancionAleatoria = canciones[Math.floor(Math.random() * canciones.length)];
+      musica.src = cancionAleatoria;
+      musica.play();
+    }
 
-    // Crear corazones flotando
+    // Corazones flotando
     function crearCorazon() {
       const corazon = document.createElement("div");
       corazon.classList.add("corazon");
@@ -104,3 +123,4 @@
   </script>
 </body>
 </html>
+
